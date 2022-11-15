@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zoom Clone || <%= title %> </title>
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <main class="main">
+        <div class="main__left">
+            <div class="main__videos">
+                <div id="video-grid">
+
+                </div>
+            </div>
+            <div class="main__controls">
+                <div class="main__controls__block">
+                    <div onclick="muteUnmute()" class="main__controls__button main__mute_button">
+                        <i class="fa-solid fa-microphone"></i>
+                        <span>Mute</span>
+                    </div>
+                    <div onclick="playStop()" class="main__controls__button main__video_button">
+                        <i class="fa-solid fa-video"></i>
+                        <span>Stop Video</span>
+                    </div>
+                </div>
+
+                <div class="main__controls__block">
+                    <div class="main__controls__button">
+                        <i class="fa-solid fa-shield-alt"></i>
+                        <span>Security</span>
+                    </div>
+                    <div class="main__controls__button">
+                        <i class="fa-solid fa-user-friends"></i>
+                        <span>Participants</span>
+                    </div>
+                    <div class="main__controls__button">
+                        <i class="fa-solid fa-comment-alt"></i>
+                        <span>Chat</span>
+                    </div>
+                </div>
+
+                <div class="main__controls__block">
+                    <div class="main__controls__button">
+                        <span class="leave_meeting">Leave Meeting</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="main__right">
+            <div class="main__header">
+                <h6>Chat</h6>
+            </div>
+            <div class="main__chat_window">
+                <ul class="messages">
+
+                </ul>
+            </div>
+            <div class="main__message_container">
+                <input type="text" id="chat_message" placeholder="Type your message here">
+            </div>
+        </div>
+    </main>
+
+    <!-- socket.io -->
+    <script src="/socket.io/socket.io.js"></script>
+    <!-- peerjs library -->
+    <script src="https://unpkg.com/peerjs@1.4.7/dist/peerjs.min.js"></script>
+
+    <script>
+        const ROOM_ID = "<%= roomId %>";
+    </script>
+    <!-- custom js -->
+    <script src="script.js"></script>
+</body>
+</html>
