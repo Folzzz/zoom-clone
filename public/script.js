@@ -18,6 +18,7 @@ const chatWindow = document.querySelector('.main__chat_window');
 const myVideo = document.createElement('video');
 
 let myVideoStream;
+const peers = {};
 
 // mute the video
 myVideo.muted = true;
@@ -53,11 +54,22 @@ const connectToNewUser = (userId, stream) => {
     // call the user with the userid
     const call = peer.call(userId, stream);
     const video = document.createElement('video');
+
     call.on('stream', userVideoStream => {
         addVideoStream(video, userVideoStream);
     });
 
+    call.on('close', () => {
+        video.remove();
+    });
+
+    peers[userId] = call;
 }
+
+// disconnect user
+socket.on('user-disconnected', userId => {
+    if (peers[userId]) peers[userId].close();
+})
 
 // peer
 peer.on('open', id => {

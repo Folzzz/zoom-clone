@@ -40,6 +40,7 @@ body {
 #video-grid {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   /* align-items: center; */
 }
 #video-grid video {

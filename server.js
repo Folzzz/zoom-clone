@@ -43,7 +43,12 @@ io.on('connection', socket => {
         //receive and send message/chat
         socket.on('message', message => {
             io.to(roomId).emit('createMessage', message);
-        })
-    })
+        });
+
+        // disconnect
+        socket.on('disconnect', () => {
+            socket.to(roomId).emit('user-disconnected', userId);
+        });
+    });
 })
 server.listen(process.env.PORT || 3030);
